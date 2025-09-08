@@ -5,11 +5,11 @@ from sklearn.model_selection import train_test_split
 #from keras.models import Sequential
 #from keras.callbacks import EarlyStopping
 #from sklearn.ensemble import RandomForestClassifier
-import chess.pgn
-import csv
 
 # Load dataset
+print("Loading dataset...")
 df = pd.read_csv("lichess_games.csv")
+print("Dataset loaded.")
 
 # Train test split
 train_val, test = train_test_split(df, test_size=0.2, random_state=42)
@@ -18,9 +18,11 @@ train_val, test = train_test_split(df, test_size=0.2, random_state=42)
 train, val = train_test_split(train_val, test_size=0.25, random_state=42)
 
 # Save splits to CSV files
+print("Saving splits to CSV files...")
 train.to_csv("train.csv", index=False)
 val.to_csv("validate.csv", index=False)
 test.to_csv("test.csv", index=False)
+print("Saving splits to CSV files...")
 
 # Data preprocessing
 
