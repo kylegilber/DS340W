@@ -1,12 +1,26 @@
 import pandas as pd
-import numpy as np
+#import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn import metrics
-from keras.models import Sequential
-from keras.callbacks import EarlyStopping
-from sklearn.ensemble import RandomForestClassifier
+#from sklearn import metrics
+#from keras.models import Sequential
+#from keras.callbacks import EarlyStopping
+#from sklearn.ensemble import RandomForestClassifier
+import chess.pgn
+import csv
 
 # Load dataset
+df = pd.read_csv("lichess_games.csv")
+
+# Train test split
+train_val, test = train_test_split(df, test_size=0.2, random_state=42)
+
+# Train validation split
+train, val = train_test_split(train_val, test_size=0.25, random_state=42)
+
+# Save splits to CSV files
+train.to_csv("train.csv", index=False)
+val.to_csv("validate.csv", index=False)
+test.to_csv("test.csv", index=False)
 
 # Data preprocessing
 
